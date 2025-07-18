@@ -204,3 +204,5 @@ pub fn main() !void {
         std.debug.print("\nFirst user: {s} (age: {}, active: {})\n", .{ first_user.name, first_user.age, first_user.active });
     }
 }
+
+// note, I am extremely proud of this, this is my first actual self made program and i feel very nice :)<

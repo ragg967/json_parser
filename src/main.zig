@@ -1,10 +1,12 @@
 const std = @import("std");
 
+// Phone number with type (mobile, home, work)
 const PhoneNumber = struct {
     type: []const u8,
     number: []const u8,
 };
 
+// Physical address structure
 const Address = struct {
     street: []const u8,
     city: []const u8,
@@ -13,18 +15,21 @@ const Address = struct {
     country: []const u8,
 };
 
+// Notification preferences
 const Notifications = struct {
     email: bool,
     sms: bool,
     push: bool,
 };
 
+// User preferences and settings
 const Preferences = struct {
     newsletter: bool,
     notifications: Notifications,
     theme: []const u8,
 };
 
+// Optional metadata about user origin
 const Metadata = struct {
     source: ?[]const u8 = null,
     campaign: ?[]const u8 = null,
@@ -33,6 +38,7 @@ const Metadata = struct {
     signupDate: ?[]const u8 = null,
 };
 
+// Complete user profile
 const User = struct {
     id: u32,
     name: []const u8,
@@ -48,6 +54,7 @@ const User = struct {
     metadata: ?Metadata,
 };
 
+// Product technical specifications
 const Specifications = struct {
     battery: []const u8,
     connectivity: [][]const u8,
@@ -55,6 +62,7 @@ const Specifications = struct {
     colors: [][]const u8,
 };
 
+// Rating distribution (1-5 stars)
 const Distribution = struct {
     @"1": u32,
     @"2": u32,
@@ -63,12 +71,14 @@ const Distribution = struct {
     @"5": u32,
 };
 
+// Product ratings summary
 const Ratings = struct {
     average: f64,
     count: u32,
     distribution: Distribution,
 };
 
+// Product catalog entry
 const Product = struct {
     id: []const u8,
     name: []const u8,
@@ -83,6 +93,7 @@ const Product = struct {
     images: [][]const u8,
 };
 
+// Individual item in an order
 const OrderItem = struct {
     productId: []const u8,
     quantity: u32,
@@ -90,6 +101,7 @@ const OrderItem = struct {
     color: []const u8,
 };
 
+// Shipping information
 const Shipping = struct {
     address: Address,
     method: []const u8,
@@ -97,6 +109,7 @@ const Shipping = struct {
     trackingNumber: []const u8,
 };
 
+// Payment details
 const Payment = struct {
     method: []const u8,
     last4: []const u8,
@@ -105,6 +118,7 @@ const Payment = struct {
     transactionId: []const u8,
 };
 
+// Order cost breakdown
 const Totals = struct {
     subtotal: f64,
     tax: f64,
@@ -112,6 +126,7 @@ const Totals = struct {
     total: f64,
 };
 
+// Complete order record
 const Order = struct {
     orderId: []const u8,
     userId: u32,
@@ -123,6 +138,7 @@ const Order = struct {
     totals: Totals,
 };
 
+// Site feature flags
 const Features = struct {
     userRegistration: bool,
     guestCheckout: bool,
@@ -130,18 +146,21 @@ const Features = struct {
     wishlist: bool,
 };
 
+// System limits and constraints
 const Limits = struct {
     maxItemsPerOrder: u8,
     maxOrderValue: f64,
     sessionTimeout: u32,
 };
 
+// Contact information
 const Contact = struct {
     email: []const u8,
     phone: []const u8,
     hours: []const u8,
 };
 
+// Site configuration
 const Settings = struct {
     siteName: []const u8,
     version: []const u8,
@@ -151,6 +170,7 @@ const Settings = struct {
     contact: Contact,
 };
 
+// Business metrics
 const Statistics = struct {
     totalUsers: u32,
     activeUsers: u32,
@@ -159,6 +179,7 @@ const Statistics = struct {
     lastUpdated: []const u8,
 };
 
+// Root JSON structure
 const RootData = struct {
     users: []User,
     products: []Product,
@@ -168,21 +189,25 @@ const RootData = struct {
 };
 
 pub fn main() !void {
+    // Initialize memory allocator
     var gpa = std.heap.GeneralPurposeAllocator(.{}){};
     defer _ = gpa.deinit();
     const allocator = gpa.allocator();
 
+    // Open JSON file
     const file = std.fs.cwd().openFile("./dummy.json", .{}) catch |err| {
         std.debug.print("ERROR: opening file failed: .{}\n", .{err});
         return;
     };
     defer file.close();
 
+    // Read entire file into memory
     const fileSize = try file.getEndPos();
     const contents = try allocator.alloc(u8, fileSize);
     defer allocator.free(contents);
     _ = try file.readAll(contents);
 
+    // Parse JSON into structs
     const parsed = std.json.parseFromSlice(RootData, allocator, contents, .{}) catch |err| {
         std.debug.print("ERROR: parsing JSON failed: {}\n", .{err});
         return;
@@ -191,6 +216,7 @@ pub fn main() !void {
 
     const data = parsed.value;
 
+    // Display parsed data summary
     std.debug.print("Successfully parsed JSON!\n", .{});
     std.debug.print("Total users: {}\n", .{data.users.len});
     std.debug.print("Total products: {}\n", .{data.products.len});
@@ -198,11 +224,11 @@ pub fn main() !void {
     std.debug.print("Site name: {s}\n", .{data.settings.siteName});
     std.debug.print("Total revenue: ${d:.2}\n", .{data.statistics.revenue});
 
-    // Print first user details
+    // Show first user as example
     if (data.users.len > 0) {
         const first_user = data.users[0];
         std.debug.print("\nFirst user: {s} (age: {}, active: {})\n", .{ first_user.name, first_user.age, first_user.active });
     }
 }
 
-// note, I am extremely proud of this, this is my first actual self made program and i feel very nice :)<
+// note, I am extremely proud of this, this is my first actual self made program and i feel very nice :)

@@ -1,0 +1,272 @@
+{
+    "users": [
+        {
+            "id": 1,
+            "name": "Alice Johnson",
+            "email": "alice@example.com",
+            "age": 28,
+            "active": true,
+            "address": {
+                "street": "123 Oak Street",
+                "city": "Portland",
+                "state": "OR",
+                "zipCode": "97201",
+                "country": "USA"
+            },
+            "phoneNumbers": [
+                {
+                    "type": "home",
+                    "number": "+1-555-123-4567"
+                },
+                {
+                    "type": "work",
+                    "number": "+1-555-987-6543"
+                }
+            ],
+            "preferences": {
+                "newsletter": true,
+                "notifications": {
+                    "email": true,
+                    "sms": false,
+                    "push": true
+                },
+                "theme": "dark"
+            },
+            "lastLogin": "2025-07-15T14:30:00Z",
+            "accountBalance": 1250.75,
+            "tags": [
+                "premium",
+                "early-adopter"
+            ],
+            "metadata": null
+        },
+        {
+            "id": 2,
+            "name": "Bob Smith",
+            "email": "bob.smith@company.com",
+            "age": 35,
+            "active": false,
+            "address": {
+                "street": "456 Pine Avenue",
+                "city": "Seattle",
+                "state": "WA",
+                "zipCode": "98101",
+                "country": "USA"
+            },
+            "phoneNumbers": [
+                {
+                    "type": "mobile",
+                    "number": "+1-555-555-0123"
+                }
+            ],
+            "preferences": {
+                "newsletter": false,
+                "notifications": {
+                    "email": false,
+                    "sms": true,
+                    "push": false
+                },
+                "theme": "light"
+            },
+            "lastLogin": "2025-06-20T09:15:22Z",
+            "accountBalance": 0.0,
+            "tags": [],
+            "metadata": {
+                "source": "referral",
+                "campaign": "summer2024",
+                "notes": "Deactivated account due to inactivity"
+            }
+        },
+        {
+            "id": 3,
+            "name": "Charlie Brown",
+            "email": "charlie@email.co",
+            "age": 22,
+            "active": true,
+            "address": {
+                "street": "789 Elm Drive",
+                "city": "San Francisco",
+                "state": "CA",
+                "zipCode": "94102",
+                "country": "USA"
+            },
+            "phoneNumbers": [],
+            "preferences": {
+                "newsletter": true,
+                "notifications": {
+                    "email": true,
+                    "sms": true,
+                    "push": true
+                },
+                "theme": "auto"
+            },
+            "lastLogin": "2025-07-17T11:45:33Z",
+            "accountBalance": 500.25,
+            "tags": [
+                "student",
+                "new-user"
+            ],
+            "metadata": {
+                "source": "organic",
+                "referredBy": 1,
+                "signupDate": "2025-07-10"
+            }
+        }
+    ],
+    "products": [
+        {
+            "id": "prod-001",
+            "name": "Wireless Headphones",
+            "description": "High-quality wireless headphones with noise cancellation",
+            "price": 299.99,
+            "currency": "USD",
+            "inStock": true,
+            "quantity": 150,
+            "categories": [
+                "electronics",
+                "audio",
+                "accessories"
+            ],
+            "specifications": {
+                "battery": "30 hours",
+                "connectivity": [
+                    "bluetooth",
+                    "usb-c"
+                ],
+                "weight": "250g",
+                "colors": [
+                    "black",
+                    "white",
+                    "blue"
+                ]
+            },
+            "ratings": {
+                "average": 4.5,
+                "count": 1247,
+                "distribution": {
+                    "5": 720,
+                    "4": 385,
+                    "3": 98,
+                    "2": 32,
+                    "1": 12
+                }
+            },
+            "images": [
+                "https://example.com/images/headphones-1.jpg",
+                "https://example.com/images/headphones-2.jpg"
+            ]
+        },
+        {
+            "id": "prod-002",
+            "name": "Smart Watch",
+            "description": "Fitness tracking smartwatch with heart rate monitor",
+            "price": 199.99,
+            "currency": "USD",
+            "inStock": false,
+            "quantity": 0,
+            "categories": [
+                "electronics",
+                "wearables",
+                "fitness"
+            ],
+            "specifications": {
+                "battery": "7 days",
+                "connectivity": [
+                    "bluetooth",
+                    "wifi"
+                ],
+                "weight": "45g",
+                "colors": [
+                    "black",
+                    "silver",
+                    "rose-gold"
+                ]
+            },
+            "ratings": {
+                "average": 4.2,
+                "count": 892,
+                "distribution": {
+                    "5": 456,
+                    "4": 267,
+                    "3": 123,
+                    "2": 31,
+                    "1": 15
+                }
+            },
+            "images": [
+                "https://example.com/images/watch-1.jpg",
+                "https://example.com/images/watch-2.jpg",
+                "https://example.com/images/watch-3.jpg"
+            ]
+        }
+    ],
+    "orders": [
+        {
+            "orderId": "ORD-2025-001",
+            "userId": 1,
+            "orderDate": "2025-07-15T10:30:00Z",
+            "status": "shipped",
+            "items": [
+                {
+                    "productId": "prod-001",
+                    "quantity": 1,
+                    "price": 299.99,
+                    "color": "black"
+                }
+            ],
+            "shipping": {
+                "address": {
+                    "street": "123 Oak Street",
+                    "city": "Portland",
+                    "state": "OR",
+                    "zipCode": "97201",
+                    "country": "USA"
+                },
+                "method": "standard",
+                "cost": 9.99,
+                "trackingNumber": "TRK123456789"
+            },
+            "payment": {
+                "method": "credit_card",
+                "last4": "1234",
+                "amount": 309.98,
+                "currency": "USD",
+                "transactionId": "txn_abc123"
+            },
+            "totals": {
+                "subtotal": 299.99,
+                "tax": 0.0,
+                "shipping": 9.99,
+                "total": 309.98
+            }
+        }
+    ],
+    "settings": {
+        "siteName": "Demo Store",
+        "version": "1.2.3",
+        "maintenance": false,
+        "features": {
+            "userRegistration": true,
+            "guestCheckout": true,
+            "reviews": true,
+            "wishlist": false
+        },
+        "limits": {
+            "maxItemsPerOrder": 10,
+            "maxOrderValue": 10000.0,
+            "sessionTimeout": 3600
+        },
+        "contact": {
+            "email": "support@demostore.com",
+            "phone": "+1-800-123-4567",
+            "hours": "9 AM - 6 PM PST"
+        }
+    },
+    "statistics": {
+        "totalUsers": 15234,
+        "activeUsers": 8901,
+        "totalOrders": 45623,
+        "revenue": 2845672.50,
+        "lastUpdated": "2025-07-17T12:00:00Z"
+    }
+}
